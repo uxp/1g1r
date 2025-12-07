@@ -1,0 +1,12 @@
+# Example configuration for 1G1R Deployment Tool
+systems:
+  PSX:
+    conversion:
+      tool: "psxpackager"
+      options: {}
+  Saturn:
+    input_pattern: "*.zip"
+    conversion:
+      tool: "saturnconvert"
+      options:
+        region: "USA"

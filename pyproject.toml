@@ -1,0 +1,18 @@
+[project]
+name = "onegame_onerom"
+version = "0.1.0"
+description = "1G1R Deployment Tool for emulation ROM conversion"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "pyyaml",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[project.scripts]
+oneg1r = "onegame_onerom.cli:main"
