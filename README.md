@@ -9,7 +9,6 @@ ability of simply copying DAT-organized files into an destination directory, for
 systems. It also has the ability to convert an archived format (BIN/CUE or ISO) to a more common Disk Image format
 like CHD or PBP.
 
-
 ## Usage
 
 Install dependencies and run the CLI:

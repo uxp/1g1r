@@ -21,7 +21,7 @@ systems:
     slug: "c64"
     file_pattern: "*.zip"
 
-  Dreamcast:
+  Dreamcast: # TODO:
     source: "1G1R - Sega - Dreamcast"
     slug: "dreamcast"
     file_pattern: "*.zip"
@@ -41,6 +41,18 @@ systems:
     slug: "gbc"
     file_pattern: "*.zip"
 
+  Gamecube: # TODO:
+    source: "1G1R - Nintendo - GameCube"
+    slug: "gamecube"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
+
+  Genesis: # TODO: 
+    source: "1G1R - Sega - Genesis"
+    slug: "genesis"
+    file_pattern: "*.zip"
+
   MSX:
     source: "1G1R - Microsoft - MSX"
     slug: "msx"
@@ -48,6 +60,16 @@ systems:
   MSX2:
     source: "1G1R - Microsoft - MSX2"
     slug: "msx2"
+    file_pattern: "*.zip"
+
+  Nintendo64:
+    source: "1G1R - Nintendo - Nintendo 64 (BigEndian)"
+    slug: "n64"
+    file_pattern: "*.zip"
+
+  NES:
+    source: "1G1R - Nintendo - Nintendo Entertainment System"
+    slug: "nes"
     file_pattern: "*.zip"
 
   Playstation:
@@ -59,6 +81,22 @@ systems:
       options:
         quiet: true
         log: "E:\\Logs\\psxpackager.log"
+
+  SNES:
+    source: "1G1R - Nintendo - Super NES"
+    slug: "snes"
+    file_pattern: "*.zip"
+
+  VirtualBoy:
+    source: "1G1R - Nintendo - Virtual Boy"
+    slug: "virtualboy"
+    file_pattern: "*.zip"
+  Wii: # TODO: 
+    source: "1G1R - Nintendo - Wii"
+    slug: "wii"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
 
   WonderSwan:
     source: "1G1R - Bandai - WonderSwan Color (Retool)"
