@@ -1,45 +1,121 @@
-# Example configuration for 1G1R Deployment Tool
 systems:
+  AmstradCPC:
+    source: "Amstrad - CPC (Flux) (Retool)"
+    slug: "amstradcpc"
+    file_pattern: "*.zip"
+
   Atari2600:
-    source: "1G1R - Atari - 2600"
+    source: "Atari - Atari 2600 (Retool)"
     slug: "atari2600"
     file_pattern: "*.zip"
   Atari5200:
-    source: "1G1R - Atari - 5200"
+    source: "Atari - Atari 5200 (Retool)"
     slug: "atari5200"
     file_pattern: "*.zip"
   Atari7800:
-    source: "1G1R - Atari - 7800"
+    source: "Atari - Atari 7800 (BIN) (Retool)"
     slug: "atari7800"
     file_pattern: "*.zip"
   AtariJaguar:
-    source: "1G1R - Atari - Jaguar (J64) (Retool)"
+    source: "Atari - Atari Jaguar (J64) (Retool)"
     slug: "atarijaguar"
     file_pattern: "*.zip"
+  AtariLynx:
+    source: "Atari - Atari Lynx (LYX) (Retool)"
+    slug: "atarilynx"
+    file_pattern: "*.zip"
+  AtariST:
+    source: "Atari - Atari ST (Retool)"
+    slug: "atarist"
+    file_pattern: "*.zip"
+
+  WonderSwan:
+    source: "Bandai - WonderSwan (Retool)"
+    slug: "wonderswan"
+    file_pattern: "*.zip"
+
+  CommodoreAmiga:
+    source: "Commodore - Amiga (Retool)"
+    slug: "amiga"
+    file_pattern: "*.zip"
   Commodore64:
-    source: "1G1R - Commodore - Commodore 64 (Retool)"
+    source: "Commodore - Commodore 64 (Retool)"
     slug: "c64"
     file_pattern: "*.zip"
-
-  Dreamcast: # TODO:
-    source: "1G1R - Sega - Dreamcast"
-    slug: "dreamcast"
+  CommodoreVIC20:
+    source: "Commodore - VIC-20 (Retool)"
+    slug: "vic20"
     file_pattern: "*.zip"
-    conversion:
-      tool: "E:\\Programs\\bin\\chdman.exe"
 
+  Vectrex:
+    source: "GCE - Vectrex (Retool)"
+    slug: "vectrex"
+    file_pattern: "*.zip"
+
+  Intellivision:
+    source: "Mattel - Intellivision (Retool)"
+    slug: "intellivision"
+    file_pattern: "*.zip"
+
+  MSX:
+    source: "Microsoft - MSX (Retool)"
+    slug: "msx"
+    file_pattern: "*.zip"
+  MSX2:
+    source: "Microsoft - MSX2 (Retool)"
+    slug: "msx2"
+    file_pattern: "*.zip"
+
+  TurboGrafx16:
+    source: "NEC - PC Engine - TurboGrafx-16 (Retool)"
+    slug: "pcengine"
+    file_pattern: "*.zip"
+  Supergrafx:
+    source: "NEC - PC Engine SuperGrafx (Retool)"
+    slug: "supergrafx"
+    file_pattern: "*.zip"
+
+  FamicomDiskSystem:
+    source: "Nintendo - Family Computer Disk System (FDS) (Retool)"
+    slug: "fds"
+    file_pattern: "*.zip"
+  GameAndWatch:
+    source: "Nintendo - Game & Watch (Retool)"
+    slug: "gameandwatch"
+    file_pattern: "*.zip"
   GameBoy:
-    source: "1G1R - Nintendo - Game Boy"
+    source: "Nintendo - Game Boy (Retool)"
     slug: "gb"
     file_pattern: "*.zip"
   GameBoyAdvance:
-    source: "1G1R - Nintendo - Game Boy Advance"
+    source: "Nintendo - Game Boy Advance (Retool)"
     slug: "gba"
     file_pattern: "*.zip"
   GameBoyColor:
-    source: "1G1R - Nintendo - Game Boy Color"
+    source: "Nintendo - Game Boy Color (Retool)"
     slug: "gbc"
     file_pattern: "*.zip"
+  Nintendo64:
+    source: "Nintendo - Nintendo 64 (BigEndian) (Retool)"
+    slug: "n64"
+    file_pattern: "*.zip"
+  NES:
+    source: "Nintendo - Nintendo Entertainment System (Headered) (Retool)"
+    slug: "nes"
+    file_pattern: "*.zip"
+  PokemonMini:
+    source: "Nintendo - Pokemon Mini (Retool)"
+    slug: "pokemini"
+    file_pattern: "*.zip"
+  Satellaview:
+    source: "Nintendo - Satellaview (Retool)"
+    slug: "satellaview"
+    file_pattern: "*.zip"
+  SufamiTurbo:
+    source: "Nintendo - Sufami Turbo (Retool)"
+    slug: "sufami"
+    file_pattern: "*.zip"
+
 
   Gamecube: # TODO:
     source: "1G1R - Nintendo - GameCube"
@@ -53,24 +129,6 @@ systems:
     slug: "genesis"
     file_pattern: "*.zip"
 
-  MSX:
-    source: "1G1R - Microsoft - MSX"
-    slug: "msx"
-    file_pattern: "*.zip"
-  MSX2:
-    source: "1G1R - Microsoft - MSX2"
-    slug: "msx2"
-    file_pattern: "*.zip"
-
-  Nintendo64:
-    source: "1G1R - Nintendo - Nintendo 64 (BigEndian)"
-    slug: "n64"
-    file_pattern: "*.zip"
-
-  NES:
-    source: "1G1R - Nintendo - Nintendo Entertainment System"
-    slug: "nes"
-    file_pattern: "*.zip"
 
   Playstation:
     source: "1G1R - Sony - Playstation"
@@ -82,10 +140,27 @@ systems:
         quiet: true
         log: "E:\\Logs\\psxpackager.log"
 
+
+
+  Dreamcast:
+    source: "1G1R - Sega - Dreamcast"
+    slug: "dreamcast"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
+
+
+  SegaCD:
+    source: "1G1R - Sega - Mega CD & Sega CD"
+    slug: "segacd"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
   SNES:
     source: "1G1R - Nintendo - Super NES"
     slug: "snes"
     file_pattern: "*.zip"
+
 
   VirtualBoy:
     source: "1G1R - Nintendo - Virtual Boy"
@@ -97,8 +172,3 @@ systems:
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
-
-  WonderSwan:
-    source: "1G1R - Bandai - WonderSwan Color (Retool)"
-    slug: "wonderswan"
-    file_pattern: "*.zip"
