@@ -1,57 +1,13 @@
-import glob
 import os
+import re
+import glob
 import shutil
-import abc
-import subprocess
 import tempfile
+import subprocess
+from .base import SystemProcessor
 
+class GamecubeProcessor(SystemProcessor):
 
-class SystemProcessor(abc.ABC):
-
-    def __init__(self, config, source_dir, dest_dir, options):
-        self.config = config
-        self.source_dir = source_dir
-        self.dest_dir = dest_dir
-        self.options = options
-
-    @abc.abstractmethod
-    def find_inputs(self):
-        pass
-
-    @abc.abstractmethod
-    def process(self):
-        pass
-
-
-# Generalized processor for copy-only systems
-class CopyProcessor(SystemProcessor):
-    def find_inputs(self):
-        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*'))
-        return glob.glob(pattern)
-
-    def process(self):
-        inputs = self.find_inputs()
-        verbose = self.options.get('verbose', False)
-        dry_run = self.options.get('dry_run', False)
-        if verbose:
-            print(f"Found files: {len(inputs)}")
-        for src_file in inputs:
-            dest_file = os.path.join(self.dest_dir, os.path.basename(src_file))
-            if verbose:
-                print(f"Copying {src_file} to {dest_file}")
-            if not dry_run:
-                if os.path.exists(dest_file) and not self.options.get('force', False):
-                    print(f"Destination file {dest_file} already exists, skipping.")
-                    continue
-                os.makedirs(self.dest_dir, exist_ok=True)
-                shutil.copy2(src_file, dest_file)
-            else:
-                print(f"[DRY-RUN] Would copy {src_file} to {dest_file}")
-        print("Copy-only processing complete.")
-
-
-# Generalized processor for CHD systems
-class CHDProcessor(SystemProcessor):
     def find_inputs(self):
         import re
         pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))
@@ -88,7 +44,7 @@ class CHDProcessor(SystemProcessor):
         dry_run = self.options.get('dry_run', False)
         force = self.options.get('force', False)
         conversion = self.config.get('conversion', {})
-        chdman_path = conversion.get('tool', 'chdman')
+        tool_path = conversion.get('tool', 'dolphintool')
         options = conversion.get('options', {})
 
         for game in inputs:
@@ -97,10 +53,9 @@ class CHDProcessor(SystemProcessor):
 
             # Check if output exists and skip unless --force
             if not force and not dry_run:
-                if any([os.path.exists(f) for f in [os.path.join(self.dest_dir, f"{game_name}.chd"), os.path.join(self.dest_dir, f"{game_name}.m3u")]]):
+                if any([os.path.exists(f) for f in [os.path.join(self.dest_dir, f"{game_name}.rvz"), os.path.join(self.dest_dir, f"{game_name}.m3u")]]):
                     print(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
                     continue
-
             print(f"Processing game: {game_name} with {len(discs)} disc(s)")
             converted_discs = []
             for disc in discs:
@@ -114,32 +69,32 @@ class CHDProcessor(SystemProcessor):
                     else:
                         print(f"[DRY-RUN] Would extract {zip_file} to {temp_dir}")
 
-                    cue_files = glob.glob(os.path.join(temp_dir, '*.cue'))
-                    if not cue_files and not dry_run:
+                    iso_files = glob.glob(os.path.join(temp_dir, '*.iso'))
+                    if not iso_files and not dry_run:
                         print(f"No CUE file found in {zip_file}, skipping.")
                         continue
 
                     if dry_run:
-                        input_arg = f"{disc_name}.cue"
+                        input_arg = f"{disc_name}.iso"
                     else:
-                        input_arg = cue_files[0]
+                        input_arg = iso_files[0]
 
                     if dry_run:
-                        output_arg = os.path.join(self.dest_dir, f"{disc_name}.chd")
+                        output_arg = os.path.join(self.dest_dir, f"{disc_name}.iso")
                     else:
-                        output_arg = os.path.join(self.dest_dir, os.path.splitext(os.path.basename(cue_files[0]))[0] + ".chd")             
+                        output_arg = os.path.join(self.dest_dir, os.path.splitext(os.path.basename(iso_files[0]))[0] + ".rvz")
                 
                     # Quote input and output args for shell
-                    cmd = [chdman_path, 'createcd', '--input', input_arg, '--output', output_arg]
+                    cmd = [tool_path, 'convert', f'--input={input_arg}', f'--output={output_arg}', '--format=rvz']
                     if force:
-                        cmd.append('--force')
+                        # force not supported in DolphinTool, so we skip this
+                        pass
                     for k, v in options.items():
                         if isinstance(v, bool):
                             if v:
                                 cmd.append(f'--{k}')
                         else:
-                            cmd.append(f'--{k}')
-                            cmd.append(str(v))
+                            cmd.append(f'--{k}={v}')
 
                     if verbose:
                         print(f"Running conversion command: {' '.join(cmd)}")

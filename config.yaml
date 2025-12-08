@@ -124,24 +124,27 @@ systems:
     slug: "virtualboy"
     file_pattern: "*.zip"
 
-  # TODO:
   Gamecube:
-    source: "1G1R - Nintendo - GameCube"
+    source: "Redump - Nintendo - GameCube (Retool)"
     slug: "gamecube"
     file_pattern: "*.zip"
     conversion:
-      tool: "E:\\Programs\\bin\\chdman.exe"
+      tool: "E:\\Programs\\Dolphin-x64\\DolphinTool.exe"
+      options:
+        compression_level: 5
+        compression: "zstd"
+        block_size: 131072
 
  # TODO:
   Wii:
-    source: "1G1R - Nintendo - Wii"
+    source: "Wii"
     slug: "wii"
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
 
   Dreamcast:
-    source: "1G1R - Sega - Dreamcast"
+    source: "Redump - Sega - Dreamcast (Retool)"
     slug: "dreamcast"
     file_pattern: "*.zip"
     conversion:
