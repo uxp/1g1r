@@ -20,12 +20,35 @@ systems:
     source: "1G1R - Commodore - Commodore 64 (Retool)"
     slug: "c64"
     file_pattern: "*.zip"
+
   Dreamcast:
     source: "1G1R - Sega - Dreamcast"
     slug: "dreamcast"
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
+
+  GameBoy:
+    source: "1G1R - Nintendo - Game Boy"
+    slug: "gb"
+    file_pattern: "*.zip"
+  GameBoyAdvance:
+    source: "1G1R - Nintendo - Game Boy Advance"
+    slug: "gba"
+    file_pattern: "*.zip"
+  GameBoyColor:
+    source: "1G1R - Nintendo - Game Boy Color"
+    slug: "gbc"
+    file_pattern: "*.zip"
+
+  MSX:
+    source: "1G1R - Microsoft - MSX"
+    slug: "msx"
+    file_pattern: "*.zip"
+  MSX2:
+    source: "1G1R - Microsoft - MSX2"
+    slug: "msx2"
+    file_pattern: "*.zip"
 
   Playstation:
     source: "1G1R - Sony - Playstation"
@@ -36,3 +59,8 @@ systems:
       options:
         quiet: true
         log: "E:\\Logs\\psxpackager.log"
+
+  WonderSwan:
+    source: "1G1R - Bandai - WonderSwan Color (Retool)"
+    slug: "wonderswan"
+    file_pattern: "*.zip"
