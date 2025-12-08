@@ -11,7 +11,6 @@ def parse_args():
     parser.add_argument('-d', '--dest', required=True, help='Target directory to output files')
     parser.add_argument('--config', required=True, help='Path to YAML configuration file')
     parser.add_argument('--verbose', action='store_true', help='Enable verbose output')
-    parser.add_argument('--debug', action='store_true', help='Enable debug mode')
     parser.add_argument('--dry-run', action='store_true', help='Simulate actions without making changes')
     return parser.parse_args()
 
@@ -22,20 +21,23 @@ def load_config(config_path):
 def main():
     args = parse_args()
     config = load_config(args.config)
-    print('Loaded config:', config)
 
     systems_config = config.get('systems', {})
     for system_name, sys_conf in systems_config.items():
         module_name = system_name.lower()
         try:
-            module = __import__(f'onegame_onerom.systems.{module_name}', fromlist=[f'{system_name}Converter'])
-            converter_class = getattr(module, f'{system_name}Converter')
+            module = __import__(f'onegame_onerom.systems.{module_name}', fromlist=[f'{system_name}Processor'])
+            processor_class = getattr(module, f'{system_name}Processor')
         except (ImportError, AttributeError) as e:
             print(f"Error loading module for {system_name}: {e}")
             continue
-        converter = converter_class(sys_conf, args.source, vars(args))
-        print(f"Running conversion for {system_name}...")
-        converter.convert()
+        # Join base source/dest with per-system config
+        sys_source = os.path.join(args.source, sys_conf.get('source'))
+        sys_dest = os.path.join(args.dest, sys_conf.get('dest'))
+
+        processor = processor_class(sys_conf, sys_source, sys_dest, vars(args))
+        print(f"Running processing for {system_name}...")
+        processor.process()
 
 if __name__ == '__main__':
     main()

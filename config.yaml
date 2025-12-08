@@ -1,9 +1,13 @@
 # Example configuration for 1G1R Deployment Tool
 systems:
   PSX:
+    source: "1G1R - Sony - Playstation"
+    dest: "psx"
     conversion:
-      tool: "psxpackager"
-      options: {}
+      tool: "E:\\Programs\\PSXPackager\\psxpackager.exe"
+      options:
+        quiet: true
+        log: "E:\\Logs\\psxpackager.log"
   Saturn:
     input_pattern: "*.zip"
     conversion:
