@@ -1,16 +1,38 @@
 # Example configuration for 1G1R Deployment Tool
 systems:
-  PSX:
+  Atari2600:
+    source: "1G1R - Atari - 2600"
+    slug: "atari2600"
+    file_pattern: "*.zip"
+  Atari5200:
+    source: "1G1R - Atari - 5200"
+    slug: "atari5200"
+    file_pattern: "*.zip"
+  Atari7800:
+    source: "1G1R - Atari - 7800"
+    slug: "atari7800"
+    file_pattern: "*.zip"
+  AtariJaguar:
+    source: "1G1R - Atari - Jaguar (J64) (Retool)"
+    slug: "atarijaguar"
+    file_pattern: "*.zip"
+  Commodore64:
+    source: "1G1R - Commodore - Commodore 64 (Retool)"
+    slug: "c64"
+    file_pattern: "*.zip"
+  Dreamcast:
+    source: "1G1R - Sega - Dreamcast"
+    slug: "dreamcast"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
+
+  Playstation:
     source: "1G1R - Sony - Playstation"
-    dest: "psx"
+    slug: "psx"
+    file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\PSXPackager\\psxpackager.exe"
       options:
         quiet: true
         log: "E:\\Logs\\psxpackager.log"
-  Saturn:
-    input_pattern: "*.zip"
-    conversion:
-      tool: "saturnconvert"
-      options:
-        region: "USA"

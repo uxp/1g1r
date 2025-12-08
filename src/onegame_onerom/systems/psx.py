@@ -5,7 +5,7 @@ from .base import SystemProcessor
 class PSXProcessor(SystemProcessor):
     def find_inputs(self):
         import re
-        pattern = os.path.join(self.source_dir, self.config.get('input_pattern', '*.zip'))
+        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))
         files = glob.glob(pattern)
         # Group files by game name, handling multi-disc
         game_map = {}
