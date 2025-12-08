@@ -115,20 +115,53 @@ systems:
     source: "Nintendo - Sufami Turbo (Retool)"
     slug: "sufami"
     file_pattern: "*.zip"
+  SNES:
+    source: "Nintendo - Super Nintendo Entertainment System (Retool)"
+    slug: "snes"
+    file_pattern: "*.zip"
+  VirtualBoy:
+    source: "Nintendo - Virtual Boy (Retool)"
+    slug: "virtualboy"
+    file_pattern: "*.zip"
 
-
-  Gamecube: # TODO:
+  # TODO:
+  Gamecube:
     source: "1G1R - Nintendo - GameCube"
     slug: "gamecube"
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
 
-  Genesis: # TODO: 
-    source: "1G1R - Sega - Genesis"
-    slug: "genesis"
+ # TODO:
+  Wii:
+    source: "1G1R - Nintendo - Wii"
+    slug: "wii"
     file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
 
+  Dreamcast:
+    source: "1G1R - Sega - Dreamcast"
+    slug: "dreamcast"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
+
+ # TODO:
+  SegaCD:
+    source: "1G1R - Sega - Mega CD & Sega CD"
+    slug: "segacd"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
+
+ # TODO:
+  Saturn:
+    source: "1G1R - Sega - Mega CD & Sega CD"
+    slug: "segacd"
+    file_pattern: "*.zip"
+    conversion:
+      tool: "E:\\Programs\\bin\\chdman.exe"
 
   Playstation:
     source: "1G1R - Sony - Playstation"
@@ -140,35 +173,39 @@ systems:
         quiet: true
         log: "E:\\Logs\\psxpackager.log"
 
-
-
-  Dreamcast:
-    source: "1G1R - Sega - Dreamcast"
-    slug: "dreamcast"
+ # TODO:
+  Playstation2:
+    source: "1G1R - Sony - Playstation"
+    slug: "ps2"
     file_pattern: "*.zip"
     conversion:
-      tool: "E:\\Programs\\bin\\chdman.exe"
+      tool: "E:\\Programs\\PSXPackager\\psxpackager.exe"
+      options:
+        quiet: true
+        log: "E:\\Logs\\psxpackager.log"
 
+  Sega32X:
+    source: "Sega - 32X (Retool)"
+    slug: "sega32x"
+    file_pattern: "*.zip"
+  GameGear:
+    source: "Sega - Game Gear (Retool)"
+    slug: "gamegear"
+    file_pattern: "*.zip"
+  MasterSystem:
+    source: "Sega - Master System - Mark III (Retool)"
+    slug: "mastersystem"
+    file_pattern: "*.zip"
+  Genesis:
+    source: "Sega - Mega Drive - Genesis (Retool)"
+    slug: "megadrive"
+    file_pattern: "*.zip"
 
-  SegaCD:
-    source: "1G1R - Sega - Mega CD & Sega CD"
-    slug: "segacd"
+  NeoGeoPocket:
+    source: "SNK - NeoGeo Pocket (Retool)"
+    slug: "ngp"
     file_pattern: "*.zip"
-    conversion:
-      tool: "E:\\Programs\\bin\\chdman.exe"
-  SNES:
-    source: "1G1R - Nintendo - Super NES"
-    slug: "snes"
+  NeoGeoPocketColor:
+    source: "SNK - NeoGeo Pocket Color (Retool)"
+    slug: "ngpc"
     file_pattern: "*.zip"
-
-
-  VirtualBoy:
-    source: "1G1R - Nintendo - Virtual Boy"
-    slug: "virtualboy"
-    file_pattern: "*.zip"
-  Wii: # TODO: 
-    source: "1G1R - Nintendo - Wii"
-    slug: "wii"
-    file_pattern: "*.zip"
-    conversion:
-      tool: "E:\\Programs\\bin\\chdman.exe"
