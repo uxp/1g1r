@@ -1,4 +1,4 @@
 from .base import CopyProcessor
 
-class Nintendo64Processor(CopyProcessor):
+class ArcadeProcessor(CopyProcessor):
     pass

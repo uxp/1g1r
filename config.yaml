@@ -125,7 +125,7 @@ systems:
     file_pattern: "*.zip"
 
   Gamecube:
-    source: "Redump - Nintendo - GameCube (Retool)"
+    source: "Nintendo - GameCube (Retool)"
     slug: "gamecube"
     file_pattern: "*.zip"
     conversion:
@@ -135,9 +135,8 @@ systems:
         compression: "zstd"
         block_size: 131072
 
- # TODO:
   Wii:
-    source: "Redump - Nintendo - Wii (Retool)"
+    source: "Nintendo - Wii (Retool)"
     slug: "wii"
     file_pattern: "*.zip"
     conversion:
@@ -146,15 +145,14 @@ systems:
         compression_level: 5
         compression: "zstd"
         block_size: 131072
-
   Dreamcast:
-    source: "Redump - Sega - Dreamcast (Retool)"
+    source: "Sega - Dreamcast (Retool)"
     slug: "dreamcast"
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
   SegaCD:
-    source: "Redump - Sega - Mega CD & Sega CD (Retool)"
+    source: "Sega - Mega CD & Sega CD (Retool)"
     slug: "segacd"
     file_pattern: "*.zip"
     conversion:
@@ -167,7 +165,7 @@ systems:
       tool: "E:\\Programs\\bin\\chdman.exe"
 
   Playstation:
-    source: "1G1R - Sony - Playstation"
+    source: "Sony - PlayStation (Retool)"
     slug: "psx"
     file_pattern: "*.zip"
     conversion:
@@ -178,7 +176,7 @@ systems:
 
  # TODO:
   Playstation2:
-    source: "1G1R - Sony - Playstation"
+    source: "ps2"
     slug: "ps2"
     file_pattern: "*.zip"
     conversion:
@@ -211,4 +209,14 @@ systems:
   NeoGeoPocketColor:
     source: "SNK - NeoGeo Pocket Color (Retool)"
     slug: "ngpc"
+    file_pattern: "*.zip"
+
+  Arcade:
+    source: "none"
+    slug: "arcade"
+    file_pattern: "*.zip"
+
+  Arduboy:
+    source: "Arduino - Arduboy (Retool)"
+    slug: "arduboy"
     file_pattern: "*.zip"

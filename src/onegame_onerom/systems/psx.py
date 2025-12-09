@@ -2,7 +2,7 @@ import glob
 import os
 from .base import SystemProcessor
 
-class PSXProcessor(SystemProcessor):
+class PlaystationProcessor(SystemProcessor):
     def find_inputs(self):
         import re
         pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))

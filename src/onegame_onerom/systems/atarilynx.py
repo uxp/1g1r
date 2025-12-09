@@ -1,4 +1,4 @@
 from .base import CopyProcessor
 
-class AtariLinxProcessor(CopyProcessor):
+class AtariLynxProcessor(CopyProcessor):
     pass

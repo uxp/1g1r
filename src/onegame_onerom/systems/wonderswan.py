@@ -1,4 +1,4 @@
 from .base import CopyProcessor
 
-class WonderswanProcessor(CopyProcessor):
+class WonderSwanProcessor(CopyProcessor):
     pass

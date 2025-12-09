@@ -41,7 +41,8 @@ class CopyProcessor(SystemProcessor):
                 print(f"Copying {src_file} to {dest_file}")
             if not dry_run:
                 if os.path.exists(dest_file) and not self.options.get('force', False):
-                    print(f"Destination file {dest_file} already exists, skipping.")
+                    if verbose:
+                        print(f"Destination file {dest_file} already exists, skipping.")
                     continue
                 os.makedirs(self.dest_dir, exist_ok=True)
                 shutil.copy2(src_file, dest_file)
@@ -128,7 +129,7 @@ class CHDProcessor(SystemProcessor):
                         output_arg = os.path.join(self.dest_dir, f"{disc_name}.chd")
                     else:
                         output_arg = os.path.join(self.dest_dir, os.path.splitext(os.path.basename(cue_files[0]))[0] + ".chd")             
-                
+
                     # Quote input and output args for shell
                     cmd = [chdman_path, 'createcd', '--input', input_arg, '--output', output_arg]
                     if force:

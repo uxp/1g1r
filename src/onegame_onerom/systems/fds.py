@@ -1,4 +1,4 @@
 from .base import CopyProcessor
 
-class FDSProcessor(CopyProcessor):
+class FamicomDiskSystemProcessor(CopyProcessor):
     pass

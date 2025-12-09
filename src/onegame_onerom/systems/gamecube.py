@@ -54,7 +54,8 @@ class GamecubeProcessor(SystemProcessor):
             # Check if output exists and skip unless --force
             if not force and not dry_run:
                 if any([os.path.exists(f) for f in [os.path.join(self.dest_dir, f"{game_name}.rvz"), os.path.join(self.dest_dir, f"{game_name}.m3u")]]):
-                    print(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
+                    if verbose:
+                        print(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
                     continue
             print(f"Processing game: {game_name} with {len(discs)} disc(s)")
             converted_discs = []
