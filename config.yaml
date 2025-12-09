@@ -137,11 +137,15 @@ systems:
 
  # TODO:
   Wii:
-    source: "Wii"
+    source: "Redump - Nintendo - Wii (Retool)"
     slug: "wii"
     file_pattern: "*.zip"
     conversion:
-      tool: "E:\\Programs\\bin\\chdman.exe"
+      tool: "E:\\Programs\\Dolphin-x64\\DolphinTool.exe"
+      options:
+        compression_level: 5
+        compression: "zstd"
+        block_size: 131072
 
   Dreamcast:
     source: "Redump - Sega - Dreamcast (Retool)"
@@ -149,19 +153,15 @@ systems:
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
-
- # TODO:
   SegaCD:
-    source: "1G1R - Sega - Mega CD & Sega CD"
+    source: "Redump - Sega - Mega CD & Sega CD (Retool)"
     slug: "segacd"
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
-
- # TODO:
   Saturn:
-    source: "1G1R - Sega - Mega CD & Sega CD"
-    slug: "segacd"
+    source: "Redump - Sega - Saturn (Retool)"
+    slug: "saturn"
     file_pattern: "*.zip"
     conversion:
       tool: "E:\\Programs\\bin\\chdman.exe"
