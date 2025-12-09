@@ -217,6 +217,6 @@ systems:
     file_pattern: "*.zip"
 
   Arduboy:
-    source: "Arduino - Arduboy (Retool)"
+    source: "Arduboy Inc - Arduboy (Retool)"
     slug: "arduboy"
     file_pattern: "*.zip"

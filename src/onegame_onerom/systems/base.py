@@ -48,7 +48,8 @@ class CopyProcessor(SystemProcessor):
                 shutil.copy2(src_file, dest_file)
             else:
                 print(f"[DRY-RUN] Would copy {src_file} to {dest_file}")
-        print("Copy-only processing complete.")
+        if verbose:
+            print("Copy-only processing complete.")
 
 
 # Generalized processor for CHD systems
@@ -99,10 +100,11 @@ class CHDProcessor(SystemProcessor):
             # Check if output exists and skip unless --force
             if not force and not dry_run:
                 if any([os.path.exists(f) for f in [os.path.join(self.dest_dir, f"{game_name}.chd"), os.path.join(self.dest_dir, f"{game_name}.m3u")]]):
-                    print(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
+                    if verbose:
+                        print(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
                     continue
-
-            print(f"Processing game: {game_name} with {len(discs)} disc(s)")
+            if verbose:
+                print(f"Processing game: {game_name} with {len(discs)} disc(s)")
             converted_discs = []
             for disc in discs:
                 zip_file = disc['file']
@@ -166,7 +168,6 @@ class CHDProcessor(SystemProcessor):
                     else:
                         print(f"[DRY-RUN] Would run: {' '.join(cmd)}")
             
-            # TODO: Handle multi-disc manifest (M3U) creation if needed
             if len(converted_discs) > 1:
                 m3u_path = os.path.join(self.dest_dir, f"{game_name}.m3u")
                 m3u_contents = []
