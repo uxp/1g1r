@@ -8,7 +8,7 @@ import logging
 from .base import SystemProcessor
 
 
-class PlaystationProcessor(SystemProcessor):
+class PSPProcessor(SystemProcessor):
     def __init__(self, config, source_dir, dest_dir, options):
         super().__init__(config, source_dir, dest_dir, options)
         self.logger = logging.getLogger(__name__)
@@ -74,6 +74,7 @@ class PlaystationProcessor(SystemProcessor):
                 if len(cue_files) == 0 and not dry_run:
                     self.logger.warning(f"No .cue files found for {game_name}")
                     continue
+
                 # If multi-disc, create m3u manifest
                 if len(cue_files) > 1 or (len(discs) > 1 and dry_run):
                     m3u_path = os.path.join(temp_dir, f"{game_name}.m3u")

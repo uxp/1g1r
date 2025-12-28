@@ -6,7 +6,13 @@ import tempfile
 import subprocess
 from .base import SystemProcessor
 
+
+import logging
+
 class WiiProcessor(SystemProcessor):
+    def __init__(self, config, source_dir, dest_dir, options):
+        super().__init__(config, source_dir, dest_dir, options)
+        self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):
         import re
@@ -54,24 +60,24 @@ class WiiProcessor(SystemProcessor):
             # Check if output exists and skip unless --force
             if not force and not dry_run:
                 if any([os.path.exists(f) for f in [os.path.join(self.dest_dir, f"{game_name}.rvz"), os.path.join(self.dest_dir, f"{game_name}.m3u")]]):
-                    print(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
+                    self.logger.warning(f"Output already exists for {game_name}, skipping. Use --force to overwrite.")
                     continue
-            print(f"Processing game: {game_name} with {len(discs)} disc(s)")
+            self.logger.info(f"Processing game: {game_name} with {len(discs)} disc(s)")
             converted_discs = []
             for disc in discs:
                 zip_file = disc['file']
                 disc_name = os.path.basename(zip_file)
                 with tempfile.TemporaryDirectory() as temp_dir:
                     if verbose:
-                        print(f"Extracting {zip_file} to {temp_dir}")
+                        self.logger.debug(f"Extracting {zip_file} to {temp_dir}")
                     if not dry_run:
                         self.extract_zip(zip_file, temp_dir)
                     else:
-                        print(f"[DRY-RUN] Would extract {zip_file} to {temp_dir}")
+                        self.logger.info(f"[DRY-RUN] Would extract {zip_file} to {temp_dir}")
 
                     iso_files = glob.glob(os.path.join(temp_dir, '*.iso'))
                     if not iso_files and not dry_run:
-                        print(f"No CUE file found in {zip_file}, skipping.")
+                        self.logger.warning(f"No CUE file found in {zip_file}, skipping.")
                         continue
 
                     if dry_run:
@@ -97,7 +103,7 @@ class WiiProcessor(SystemProcessor):
                             cmd.append(f'--{k}={v}')
 
                     if verbose:
-                        print(f"Running conversion command: {' '.join(cmd)}")
+                        self.logger.debug(f"Running conversion command: {' '.join(cmd)}")
 
                     if not dry_run:
                         try:
@@ -111,14 +117,14 @@ class WiiProcessor(SystemProcessor):
                             )
                             stdout, stderr = process.communicate()
                             if verbose:
-                                print("Conversion output:", stdout)
+                                self.logger.debug(f"Conversion output: {stdout}")
                                 if stderr:
-                                    print("Conversion errors:", stderr)
+                                    self.logger.warning(f"Conversion errors: {stderr}")
                             converted_discs.append(output_arg)
                         except Exception as e:
-                            print(f"Error running conversion tool: {e}")
+                            self.logger.error(f"Error running conversion tool: {e}")
                     else:
-                        print(f"[DRY-RUN] Would run: {' '.join(cmd)}")
+                        self.logger.info(f"[DRY-RUN] Would run: {' '.join(cmd)}")
             
             # TODO: Handle multi-disc manifest (M3U) creation if needed
             if len(converted_discs) > 1:
@@ -131,7 +137,7 @@ class WiiProcessor(SystemProcessor):
                     dest_filepath = os.path.join(disc_path, os.path.basename(src_file))
                     dest_filename = "/".join([game_name, os.path.basename(src_file)])
                     if verbose:
-                        print(f"Moving {src_file} to {dest_filepath}")
+                        self.logger.debug(f"Moving {src_file} to {dest_filepath}")
                     if not dry_run:
                         shutil.move(src_file, dest_filepath)
                     m3u_contents.append(dest_filename)
@@ -141,10 +147,10 @@ class WiiProcessor(SystemProcessor):
                     with open(m3u_path, 'w') as m3u:
                         m3u.write(m3u_contents)
                     if verbose:
-                        print(f"Created M3U manifest at {m3u_path}")
+                        self.logger.info(f"Created M3U manifest at {m3u_path}")
                 else:
-                    print(f"[DRY-RUN] Would create m3u file: {m3u_path}")
+                    self.logger.info(f"[DRY-RUN] Would create m3u file: {m3u_path}")
 
             if verbose:
-                print(f"Processed \"{game_name}\" with #{len(discs)} discs successfully.")
+                self.logger.info(f"Processed \"{game_name}\" with #{len(discs)} discs successfully.")
 

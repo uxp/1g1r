@@ -8,6 +8,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
+    "click>=8.0,<9",
     "pyyaml",
 ]
 
@@ -15,4 +16,4 @@ dependencies = [
 package-dir = {"" = "src"}
 
 [project.scripts]
-oneg1r = "onegame_onerom.cli:main"
+oneg1r = "src.onegame_onerom.cli:cli"
