@@ -1,4 +1,4 @@
-from .base import CopyProcessor
+from . import CopyProcessor
 
 class GameAndWatchProcessor(CopyProcessor):
     pass

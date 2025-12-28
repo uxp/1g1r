@@ -7,7 +7,7 @@ import subprocess
 import zipfile
 import logging
 
-from .base import SystemProcessor
+from . import SystemProcessor
 
 class GamecubeProcessor(SystemProcessor):
     def __init__(self, config, source_dir, dest_dir, options):

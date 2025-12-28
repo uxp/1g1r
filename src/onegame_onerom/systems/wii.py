@@ -1,10 +1,9 @@
 import os
-import re
 import glob
 import shutil
 import tempfile
 import subprocess
-from .base import SystemProcessor
+from . import SystemProcessor
 
 
 import logging

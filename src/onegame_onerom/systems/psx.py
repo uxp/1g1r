@@ -5,7 +5,7 @@ import zipfile
 import tempfile
 import subprocess
 import logging
-from .base import SystemProcessor
+from . import SystemProcessor
 
 
 class PlaystationProcessor(SystemProcessor):

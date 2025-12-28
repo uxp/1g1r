@@ -1,4 +1,4 @@
-from .base import NullProcessor
+from . import NullProcessor
 
 class WiiUProcessor(NullProcessor):
     """Wii U disk images. Not sure the best way to convert these from ISO format to

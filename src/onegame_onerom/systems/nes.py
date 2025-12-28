@@ -1,4 +1,4 @@
-from .base import CopyProcessor
+from . import CopyProcessor
 
 class NESProcessor(CopyProcessor):
     pass

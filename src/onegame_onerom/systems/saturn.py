@@ -1,4 +1,4 @@
-from .base import CHDProcessor
+from . import CHDProcessor
 
 class SaturnProcessor(CHDProcessor):
     pass
