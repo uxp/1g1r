@@ -30,8 +30,10 @@ def cli(ctx, config, dry_run=False, force=False, log=None):
     source_dir = config.get("source", "")
     dest_dir = config.get("dest", "")
 
-    systems_config = config.get('systems', {})
-    for system_name, sys_conf in systems_config.items():
+    systems_config: dict[str, dict] = config.get('systems', {})
+    sorted_systems = {name: obj for name, obj in sorted(systems_config.items(), key=lambda x: x[1].get('slug', None))}
+
+    for system_name, sys_conf in sorted_systems.items():
         module_name = sys_conf.get('slug', None)
         if module_name is None:
             logger.error(f"No slug defined for {system_name}. Aborting.")

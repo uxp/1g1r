@@ -17,14 +17,15 @@ def config_logging(verbose, log_path=None):
 
     if verbose:
         log_level = logging.DEBUG
-        console_handler = logging.StreamHandler()
-        console_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s %(name)s: %(message)s', '%Y-%m-%d %H:%M:%S'))
-        log_handlers.append(console_handler)
 
     if log_path:
         file_handler = logging.FileHandler(log_path, encoding='utf-8')
         file_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s %(name)s: %(message)s', '%Y-%m-%d %H:%M:%S'))
         log_handlers.append(file_handler)
+
+    console_handler = logging.StreamHandler()
+    console_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s %(name)s: %(message)s', '%Y-%m-%d %H:%M:%S'))
+    log_handlers.append(console_handler)
 
     logging.basicConfig(level=log_level, handlers=log_handlers)
     logger = logging.getLogger(__name__)

@@ -50,6 +50,11 @@ class GamecubeProcessor(SystemProcessor):
         tool_path = conversion.get('tool', 'dolphintool')
         options = conversion.get('options', {})
 
+        if len(inputs) == 0:
+            self.logger.warning("No GameCube input files found, skipping processing.")
+            return
+        self.logger.info(f"Found GameCube games: {len(inputs)}")
+
         for game in inputs:
             game_name = game['name']
             discs = game['discs']

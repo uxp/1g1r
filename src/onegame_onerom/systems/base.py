@@ -55,7 +55,11 @@ class CopyProcessor(SystemProcessor):
         dry_run = self.options.get('dry_run', False)
         threads = self.options.get('threads', 4)
 
-        self.logger.debug(f"Found files: {len(inputs)}")
+        if len(inputs) == 0:
+            self.logger.warning("No input files found, skipping processing.")
+            return
+        self.logger.info(f"Found files: {len(inputs)}")
+
         if dry_run:
             for src_file in inputs:
                 dest_file = os.path.join(self.dest_dir, os.path.basename(src_file))
@@ -118,7 +122,11 @@ class CHDProcessor(SystemProcessor):
         chdman_path = conversion.get('tool', 'chdman')
         options = conversion.get('options', {})
 
+        if len(inputs) == 0:
+            self.logger.warning("No input files found, skipping processing.")
+            return
         self.logger.info(f"Found games: {len(inputs)}")
+
         for game in inputs:
             game_name = game['name']
             discs = game['discs']

@@ -45,10 +45,10 @@ class PSPProcessor(SystemProcessor):
         inputs = self.find_inputs()
         dry_run = self.options.get('dry_run', False)
         force = self.options.get('force', False)
-        self.logger.debug(f"Found PSX games: {len(inputs)}")
         if len(inputs) == 0:
-            self.logger.warning("No PSX input files found, skipping processing.")
+            self.logger.warning("No PSP input files found, skipping processing.")
             return
+        self.logger.info(f"Found PSP games: {len(inputs)}")
 
         for game in inputs:
             game_name = game['name']
@@ -58,7 +58,7 @@ class PSPProcessor(SystemProcessor):
             if os.path.exists(output_file) and not force and not dry_run:
                 self.logger.warning(f"Output already exists for {output_file}, skipping. Use --force to overwrite.")
                 continue
-            self.logger.info(f"Processing game: {game_name} with {len(discs)} disc(s)")
+            self.logger.debug(f"Processing game: {game_name} with {len(discs)} disc(s)")
             with tempfile.TemporaryDirectory() as temp_dir:
                 extracted_cues = []
                 for disc in discs:
@@ -68,17 +68,17 @@ class PSPProcessor(SystemProcessor):
                         self.extract_zip(zip_file, temp_dir)
                     else:
                         self.logger.info(f"[DRY-RUN] Would extract {zip_file} to {temp_dir}")
-                # Find all .cue files in temp_dir
-                cue_files = [os.path.join(temp_dir, f) for f in os.listdir(temp_dir) if f.lower().endswith('.cue')]
-                cue_files.sort()  # Ensure order
-                if len(cue_files) == 0 and not dry_run:
-                    self.logger.warning(f"No .cue files found for {game_name}")
+                # Find all .iso and .cue files in temp_dir
+                disc_files = [os.path.join(temp_dir, f) for f in os.listdir(temp_dir) if f.lower().endswith('.cue') or f.lower().endswith('.iso')]
+                disc_files.sort()  # Ensure order
+                if len(disc_files) == 0 and not dry_run:
+                    self.logger.warning(f"No .iso or .cue files found for {game_name}")
                     continue
 
                 # If multi-disc, create m3u manifest
-                if len(cue_files) > 1 or (len(discs) > 1 and dry_run):
+                if len(disc_files) > 1 or (len(discs) > 1 and dry_run):
                     m3u_path = os.path.join(temp_dir, f"{game_name}.m3u")
-                    m3u_contents = '\n'.join([os.path.basename(c) for c in cue_files])
+                    m3u_contents = '\n'.join([os.path.basename(c) for c in disc_files])
                     if not dry_run:
                         with open(m3u_path, 'w') as m3u:
                             m3u.write(m3u_contents)
@@ -89,7 +89,7 @@ class PSPProcessor(SystemProcessor):
                     if dry_run:
                         input_arg = f"{game_name}.cue"
                     else:
-                        input_arg = cue_files[0]
+                        input_arg = disc_files[0]
                 # Prepare command for psxpackager
                 conversion = self.config.get('conversion', {})
                 tool = conversion.get('tool', 'psxpackager')

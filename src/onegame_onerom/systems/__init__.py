@@ -33,4 +33,11 @@
 # - TurboGrafx-CD: chd (chdman)
 # - Virtual Boy: zip
 # - Xbox: emulator doesn't support compression for now (Use iso2god for trimming iso)
-# - Xbox 360: emulator doesn't support compression for now (Use iso2god for trimming iso) 
+# - Xbox 360: emulator doesn't support compression for now (Use iso2god for trimming iso)
+__template__ = """
+from .base import CopyProcessor
+
+class {{ SystemName }}Processor(CopyProcessor):
+    pass
+
+"""

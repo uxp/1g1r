@@ -45,10 +45,10 @@ class Playstation3Processor(SystemProcessor):
         inputs = self.find_inputs()
         dry_run = self.options.get('dry_run', False)
         force = self.options.get('force', False)
-        self.logger.debug(f"Found PS3 games: {len(inputs)}")
         if len(inputs) == 0:
             self.logger.warning("No PS3 input files found, skipping processing.")
             return
+        self.logger.info(f"Found PS3 games: {len(inputs)}")
 
         for game in inputs:
             game_name = game['name']
@@ -58,7 +58,7 @@ class Playstation3Processor(SystemProcessor):
             if os.path.exists(output_file) and not force and not dry_run:
                 self.logger.warning(f"Output already exists for {output_file}, skipping. Use --force to overwrite.")
                 continue
-            self.logger.info(f"Processing game: {game_name} with {len(discs)} disc(s)")
+            self.logger.debug(f"Processing game: {game_name} with {len(discs)} disc(s)")
             with tempfile.TemporaryDirectory() as temp_dir:
                 extracted_cues = []
                 for disc in discs:

@@ -132,6 +132,27 @@ convert:
       slug: "supergrafx"
       file_pattern: "*.zip"
 
+    NeoGeoPocket:
+      source: "1G1R/SNK - NeoGeo Pocket (Retool)"
+      slug: "ngp"
+      file_pattern: "*.zip"
+    NeoGeoPocketColor:
+      source: "1G1R/SNK - NeoGeo Pocket Color (Retool)"
+      slug: "ngpc"
+      file_pattern: "*.zip"
+
+    Arduboy:
+      source: "1G1R/Arduboy Inc - Arduboy (Retool)"
+      slug: "arduboy"
+      file_pattern: "*.zip"
+
+
+    Arcade:
+      source: "MAME/MAME ROMs (merged)"
+      slug: "arcade"
+      file_pattern: "*.zip"
+
+    ## NINTENDO
     FamicomDiskSystem:
       source: "1G1R/Nintendo - Family Computer Disk System (FDS) (Retool)"
       slug: "fds"
@@ -155,6 +176,14 @@ convert:
     Nintendo64:
       source: "1G1R/Nintendo - Nintendo 64 (BigEndian) (Retool)"
       slug: "n64"
+      file_pattern: "*.zip"
+    NintendoDS:
+      source: "1G1R/Nintendo - Nintendo DS (Decrypted) (Retool)"
+      slug: "nds"
+      file_pattern: "*.zip"
+    Nintendo3DS:
+      source: "1G1R/Nintendo - Nintendo 3DS (Decrypted) (Retool)"
+      slug: "n3ds"
       file_pattern: "*.zip"
     NES:
       source: "1G1R/Nintendo - Nintendo Entertainment System (Headered) (Retool)"
@@ -181,6 +210,29 @@ convert:
       slug: "virtualboy"
       file_pattern: "*.zip"
 
+    ## SEGA
+    SG1000:
+      source: "1G1R/Sega - SG-1000 - SC-3000 (Retool)"
+      slug: "sg-1000"
+      file_pattern: "*.zip"
+    MasterSystem:
+      source: "1G1R/Sega - Master System - Mark III (Retool)"
+      slug: "mastersystem"
+      file_pattern: "*.zip"
+    GameGear:
+      source: "1G1R/Sega - Game Gear (Retool)"
+      slug: "gamegear"
+      file_pattern: "*.zip"
+    Genesis:
+      source: "1G1R/Sega - Mega Drive - Genesis (Retool)"
+      slug: "megadrive"
+      file_pattern: "*.zip"
+    Sega32X:
+      source: "1G1R/Sega - 32X (Retool)"
+      slug: "sega32x"
+      file_pattern: "*.zip"
+
+    ## Disc Systems
     Gamecube:
       source: "1G1R/Nintendo - GameCube (Retool)"
       slug: "gc"
@@ -191,7 +243,6 @@ convert:
           compression_level: 5
           compression: "zstd"
           block_size: 131072
-
     Wii:
       source: "1G1R/Nintendo - Wii (Retool)"
       slug: "wii"
@@ -220,7 +271,6 @@ convert:
       file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
-
     Playstation:
       source: "1G1R/Sony - PlayStation (Retool)"
       slug: "psx"
@@ -230,6 +280,7 @@ convert:
         options:
           quiet: true
           log: "E:/Logs/psxpackager.log"
+
     PSP:
       source: "1G1R/Sony - PlayStation Portable (Retool)"
       slug: "psp"
@@ -239,6 +290,7 @@ convert:
         options:
           quiet: true
           log: "E:/Logs/psxpackager.log"
+
     Playstation2:
       source: "1G1R/Sony - PlayStation 2 (Retool)"
       slug: "ps2"
@@ -252,45 +304,4 @@ convert:
       file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/ps3dec.exe"
-
-
-    SG1000:
-      source: "1G1R/Sega - SG-1000 - SC-3000 (Retool)"
-      slug: "sg-1000"
-      file_pattern: "*.zip"
-    MasterSystem:
-      source: "1G1R/Sega - Master System - Mark III (Retool)"
-      slug: "mastersystem"
-      file_pattern: "*.zip"
-    GameGear:
-      source: "1G1R/Sega - Game Gear (Retool)"
-      slug: "gamegear"
-      file_pattern: "*.zip"
-    Genesis:
-      source: "1G1R/Sega - Mega Drive - Genesis (Retool)"
-      slug: "megadrive"
-      file_pattern: "*.zip"
-    Sega32X:
-      source: "1G1R/Sega - 32X (Retool)"
-      slug: "sega32x"
-      file_pattern: "*.zip"
-
-
-    NeoGeoPocket:
-      source: "1G1R/SNK - NeoGeo Pocket (Retool)"
-      slug: "ngp"
-      file_pattern: "*.zip"
-    NeoGeoPocketColor:
-      source: "1G1R/SNK - NeoGeo Pocket Color (Retool)"
-      slug: "ngpc"
-      file_pattern: "*.zip"
-
-    Arcade:
-      source: "1G1R/none"
-      slug: "arcade"
-      file_pattern: "*.zip"
-
-    Arduboy:
-      source: "1G1R/Arduboy Inc - Arduboy (Retool)"
-      slug: "arduboy"
-      file_pattern: "*.zip"
+        dkeys: "D:/RomFiles/Sony - PlayStation 3 - Disc Keys TXT (4417) (2025-12-25 15-00-26)/"
