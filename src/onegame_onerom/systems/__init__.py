@@ -25,7 +25,8 @@
 # - Playstation: pbp (psx2psp, compress and combine multi-disc game) or chd (for better compression)
 # - Playstation 2:  chd (chdman)
 # - Playstation 3: emulator doesn't support compression for now
-# - Playstation Portable (psp): cso (yacc)
+# - Playstation Portable (psp): cso (yacc or maxcso)
+# - Playstation Vita: ???
 # - Saturn: chd (chdman)
 # - Sega CD: chd (chdman)
 # - Super Nintendo: zip
@@ -54,6 +55,14 @@ import zipfile
 from concurrent.futures import ThreadPoolExecutor
 
 
+def touch(fname, times=None):
+    fhandle = open(fname, 'a')
+    try:
+        os.utime(fname, times)
+    finally:
+        fhandle.close()
+
+
 class SystemProcessor(abc.ABC):
 
     def __init__(self, config, source_dir, dest_dir, options):
@@ -61,7 +70,7 @@ class SystemProcessor(abc.ABC):
         self.source_dir = source_dir
         self.dest_dir = dest_dir
         self.options = options
-        self.logger = logging.getLogger('.'.join([*__name__.split('.')[0:-1], config.get('slug', 'unknown')]))
+        self.logger = logging.getLogger('.'.join([*__name__.split('.'), config.get('slug', 'unknown')]))
 
     @abc.abstractmethod
     def find_inputs(self):
@@ -82,7 +91,7 @@ class NullProcessor(SystemProcessor):
         return []
 
     def process(self):
-        self.logger.info("Skipped.")
+        self.logger.info(f"Skipped {self.config.get('slug', 'Unknown')} System.")
 
 
 # Generalized processor for copy-only systems
@@ -248,6 +257,7 @@ class CHDProcessor(SystemProcessor):
                 disc_path = os.path.join(self.dest_dir, 'discs')
                 if not os.path.exists(disc_path) and not dry_run:
                     os.makedirs(disc_path, exist_ok=True)
+                touch(os.path.join(disc_path, "noload.txt"))
                 for src_file in converted_discs:
                     dest_filepath = os.path.join(disc_path, os.path.basename(src_file))
                     dest_filename = "/".join(['discs', os.path.basename(src_file)])

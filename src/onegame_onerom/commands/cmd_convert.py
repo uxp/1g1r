@@ -12,7 +12,7 @@ def load_config(config_path, prefix="convert"):
 
 
 @click.command()
-@click.argument('config', type=click.Path(exists=True), default='config.yml')
+@click.argument('config', type=click.Path(exists=True), default='config.yaml')
 @click.option('--dry-run', default=False, is_flag=True, help='Simulate actions without making changes')
 @click.option('--force', default=False, is_flag=True, help='Force overwrite of existing files')
 @click.option('--log', type=str, help='Path to log file (in addition to console output)')
@@ -24,7 +24,7 @@ def cli(ctx, config, dry_run=False, force=False, log=None):
     For other systems, this may involve conversion from a BIN/CUE or ISO format
     to a CHD, or another usable format.
     """
-    logger = ctx.obj.get('logger', logging.getLogger(__name__))
+    logger = logging.getLogger(__name__)
     config = load_config(config)
 
     source_dir = config.get("source", "")

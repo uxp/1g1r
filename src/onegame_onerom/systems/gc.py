@@ -7,7 +7,7 @@ import subprocess
 import zipfile
 import logging
 
-from . import SystemProcessor
+from . import SystemProcessor, touch
 
 class GamecubeProcessor(SystemProcessor):
     def __init__(self, config, source_dir, dest_dir, options):
@@ -83,14 +83,11 @@ class GamecubeProcessor(SystemProcessor):
 
                     if dry_run:
                         input_arg = f"{disc_name}.iso"
-                    else:
-                        input_arg = iso_files[0]
-
-                    if dry_run:
                         output_arg = os.path.join(self.dest_dir, f"{disc_name}.iso")
                     else:
+                        input_arg = iso_files[0]
                         output_arg = os.path.join(self.dest_dir, os.path.splitext(os.path.basename(iso_files[0]))[0] + ".rvz")
-                
+
                     # Quote input and output args for shell
                     cmd = [tool_path, 'convert', f'--input={input_arg}', f'--output={output_arg}', '--format=rvz']
                     if force:
@@ -132,6 +129,7 @@ class GamecubeProcessor(SystemProcessor):
                 disc_path = os.path.join(self.dest_dir, 'discs')
                 if not os.path.exists(disc_path) and not dry_run:
                     os.makedirs(disc_path, exist_ok=True)
+                touch(os.path.join(disc_path, "noload.txt"))
                 for src_file in converted_discs:
                     dest_filepath = os.path.join(disc_path, os.path.basename(src_file))
                     dest_filename = "/".join(['discs', os.path.basename(src_file)])

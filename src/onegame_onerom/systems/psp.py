@@ -53,14 +53,13 @@ class PSPProcessor(SystemProcessor):
         for game in inputs:
             game_name = game['name']
             discs = game['discs']
-            output_file = os.path.join(self.dest_dir, f"{game_name}.pbp")
+            output_file = os.path.join(self.dest_dir, f"{game_name}.cso")
             # Check if output exists and skip unless --force
             if os.path.exists(output_file) and not force and not dry_run:
                 self.logger.warning(f"Output already exists for {output_file}, skipping. Use --force to overwrite.")
                 continue
             self.logger.debug(f"Processing game: {game_name} with {len(discs)} disc(s)")
             with tempfile.TemporaryDirectory() as temp_dir:
-                extracted_cues = []
                 for disc in discs:
                     zip_file = disc['file']
                     self.logger.debug(f"Extracting {zip_file} to {temp_dir}")
@@ -68,43 +67,32 @@ class PSPProcessor(SystemProcessor):
                         self.extract_zip(zip_file, temp_dir)
                     else:
                         self.logger.info(f"[DRY-RUN] Would extract {zip_file} to {temp_dir}")
-                # Find all .iso and .cue files in temp_dir
-                disc_files = [os.path.join(temp_dir, f) for f in os.listdir(temp_dir) if f.lower().endswith('.cue') or f.lower().endswith('.iso')]
+                # Find all .iso files in temp_dir
+                disc_files = [os.path.join(temp_dir, f) for f in os.listdir(temp_dir) if f.lower().endswith('.iso')]
                 disc_files.sort()  # Ensure order
                 if len(disc_files) == 0 and not dry_run:
-                    self.logger.warning(f"No .iso or .cue files found for {game_name}")
+                    self.logger.warning(f"No .iso files found for {game_name}")
                     continue
+                # This processor doesnt merge multi-disc games. There shouldn't be any anyways.
 
-                # If multi-disc, create m3u manifest
-                if len(disc_files) > 1 or (len(discs) > 1 and dry_run):
-                    m3u_path = os.path.join(temp_dir, f"{game_name}.m3u")
-                    m3u_contents = '\n'.join([os.path.basename(c) for c in disc_files])
-                    if not dry_run:
-                        with open(m3u_path, 'w') as m3u:
-                            m3u.write(m3u_contents)
-                    else:
-                        self.logger.info(f"[DRY-RUN] Would create m3u file: {m3u_path}")
-                    input_arg = m3u_path
+                if dry_run:
+                    input_arg = f"{game_name}.iso"
                 else:
-                    if dry_run:
-                        input_arg = f"{game_name}.cue"
-                    else:
-                        input_arg = disc_files[0]
+                    input_arg = disc_files[0]
+
                 # Prepare command for psxpackager
                 conversion = self.config.get('conversion', {})
                 tool = conversion.get('tool', 'psxpackager')
                 options = conversion.get('options', {})
                 # Quote input and output args for shell
-                cmd = [tool, '--input', input_arg, '--output', self.dest_dir]
-                if force:
-                    cmd.append('-x')
+                cmd_args = [f"--output-path={self.dest_dir}", input_arg]
                 for k, v in options.items():
                     if isinstance(v, bool):
                         if v:
-                            cmd.append(f'--{k}')
+                            cmd_args = [f'--{k}', *cmd_args]
                     else:
-                        cmd.append(f'--{k}')
-                        cmd.append(str(v))
+                        cmd_args = [f'--{k}={str(v)}', *cmd_args]
+                cmd = [tool, *cmd_args]
                 self.logger.debug(f"Running conversion command: {' '.join(cmd)}")
                 if not dry_run:
                     try:
@@ -124,4 +112,7 @@ class PSPProcessor(SystemProcessor):
                         self.logger.error(f"Error running conversion tool: {e}")
                 else:
                     self.logger.info(f"[DRY-RUN] Would run: {' '.join(cmd)}")
+
             self.logger.debug(f"Processed \"{game_name}\" with #{len(discs)} discs successfully.")
+
+        self.logger.info("Processed {len(inputs)} PSP games.")

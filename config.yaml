@@ -146,7 +146,6 @@ convert:
       slug: "arduboy"
       file_pattern: "*.zip"
 
-
     Arcade:
       source: "MAME/MAME ROMs (merged)"
       slug: "arcade"
@@ -253,6 +252,19 @@ convert:
           compression_level: 5
           compression: "zstd"
           block_size: 131072
+    WiiWare:
+      source: "1G1R/Nintendo - WiiWare (Retool)"
+      slug: "wiiware"
+      file_pattern: "*.wad"
+    WiiU:
+      source: "1G1R/Nintendo - WiiU (Retool)"
+      slug: "wiiu"
+      file_pattern: "*.wu[x|a]"
+    Switch:
+      source: "1G1R/Nintendo - Switch (Retool)"
+      slug: "switch"
+      file_pattern: "*.(nsp|xci)"
+
     Dreamcast:
       source: "1G1R/Sega - Dreamcast (Retool)"
       slug: "dreamcast"

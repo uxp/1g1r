@@ -42,7 +42,7 @@ def copy_file(src_file, dest_file, label="Copied"):
 
 @click.command()
 @click.pass_context
-@click.argument('config', type=click.Path(exists=True), default='backup.yml')
+@click.argument('config', type=click.Path(exists=True), default='config.yaml')
 @click.option('-t', '--threads', default=8, help='Number of concurrent threads.', type=click.IntRange(min=1, max=None))
 def cli(ctx, config, threads):
     """Backup files as per CONFIG."""

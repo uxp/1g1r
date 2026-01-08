@@ -3,7 +3,7 @@ import glob
 import shutil
 import tempfile
 import subprocess
-from . import SystemProcessor
+from . import SystemProcessor, touch
 
 
 import logging
@@ -137,6 +137,7 @@ class WiiProcessor(SystemProcessor):
                 disc_path = os.path.join(self.dest_dir, game_name)
                 if not os.path.exists(disc_path) and not dry_run:
                     os.makedirs(disc_path, exist_ok=True)
+                touch(os.path.join(disc_path, "noload.txt"))
                 for src_file in converted_discs:
                     dest_filepath = os.path.join(disc_path, os.path.basename(src_file))
                     dest_filename = "/".join([game_name, os.path.basename(src_file)])
