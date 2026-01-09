@@ -1,4 +1,5 @@
 from . import CHDProcessor
 
 class SaturnProcessor(CHDProcessor):
-    pass
+    file_pattern = "*.zip"
+

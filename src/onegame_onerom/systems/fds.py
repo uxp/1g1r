@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class FamicomDiskSystemProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

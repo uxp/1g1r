@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class AtariSTProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

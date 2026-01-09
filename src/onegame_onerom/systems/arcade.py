@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class ArcadeProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

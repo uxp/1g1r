@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class VectrexProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

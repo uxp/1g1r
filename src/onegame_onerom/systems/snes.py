@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
-class SNESProcessor(CopyProcessor):
-    pass
+class SuperNintendoProcessor(CopyProcessor):
+    file_pattern = "*.zip"

@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class VirtualBoyProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

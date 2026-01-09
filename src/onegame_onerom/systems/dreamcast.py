@@ -1,4 +1,5 @@
 from . import CHDProcessor
 
 class DreamcastProcessor(CHDProcessor):
-    pass
+    file_pattern = "*.zip"
+

@@ -64,6 +64,7 @@ def touch(fname, times=None):
 
 
 class SystemProcessor(abc.ABC):
+    file_pattern = "*"
 
     def __init__(self, config, source_dir, dest_dir, options):
         self.config = config
@@ -100,7 +101,7 @@ class CopyProcessor(SystemProcessor):
         super().__init__(config, source_dir, dest_dir, options)
 
     def find_inputs(self):
-        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*'))
+        pattern = os.path.join(self.source_dir, self.file_pattern)
         return glob.glob(pattern)
 
     def process(self):
@@ -135,11 +136,13 @@ class CopyProcessor(SystemProcessor):
 
 # Generalized processor for CHD systems
 class CHDProcessor(SystemProcessor):
+    file_pattern = "*.zip"
+
     def __init__(self, config, source_dir, dest_dir, options):
         super().__init__(config, source_dir, dest_dir, options)
 
     def find_inputs(self):
-        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))
+        pattern = os.path.join(self.source_dir, self.file_pattern)
         files = glob.glob(pattern)
         # Group files by game name, handling multi-disc
         game_map = {}

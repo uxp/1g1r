@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class GameAndWatchProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

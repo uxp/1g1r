@@ -3,19 +3,21 @@ import glob
 import shutil
 import tempfile
 import subprocess
+import re
 from . import SystemProcessor, touch
 
 
 import logging
 
 class WiiProcessor(SystemProcessor):
+    file_pattern = "*.zip"
+
     def __init__(self, config, source_dir, dest_dir, options):
         super().__init__(config, source_dir, dest_dir, options)
         self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):
-        import re
-        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))
+        pattern = os.path.join(self.source_dir, self.file_pattern)
         files = glob.glob(pattern)
         # Group files by game name, handling multi-disc
         game_map = {}

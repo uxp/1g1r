@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class GameGearProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

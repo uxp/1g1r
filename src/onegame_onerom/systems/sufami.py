@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class SufamiTurboProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

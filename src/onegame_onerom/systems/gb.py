@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class GameBoyProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

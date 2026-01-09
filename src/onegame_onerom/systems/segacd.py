@@ -1,4 +1,5 @@
 from . import CHDProcessor
 
 class SegaCDProcessor(CHDProcessor):
-    pass
+    file_pattern = "*.zip"
+

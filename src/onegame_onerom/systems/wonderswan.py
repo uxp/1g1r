@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class WonderSwanProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

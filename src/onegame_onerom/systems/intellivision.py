@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class IntellivisionProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

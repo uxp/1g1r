@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class AmstradCPCProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

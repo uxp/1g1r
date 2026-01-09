@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class MSXProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class SatellaviewProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

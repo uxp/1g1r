@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class NeoGeoPocketColorProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

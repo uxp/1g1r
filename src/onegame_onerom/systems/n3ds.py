@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
-class PokemonMiniProcessor(CopyProcessor):
+class Nintendo3DSProcessor(CopyProcessor):
     file_pattern = "*.zip"

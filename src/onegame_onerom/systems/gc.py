@@ -10,6 +10,8 @@ import logging
 from . import SystemProcessor, touch
 
 class GamecubeProcessor(SystemProcessor):
+    file_pattern = "*.zip"
+
     def __init__(self, config, source_dir, dest_dir, options):
         super().__init__(config, source_dir, dest_dir, options)
         self.logger = logging.getLogger(__name__)

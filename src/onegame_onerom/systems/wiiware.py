@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class WiiWareProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.wad"

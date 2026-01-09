@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class ArduboyProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

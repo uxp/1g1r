@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class Commodore64Processor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

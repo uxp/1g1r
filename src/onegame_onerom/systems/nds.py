@@ -1,4 +1,4 @@
 from . import CopyProcessor
 
 class NintendoDSProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"

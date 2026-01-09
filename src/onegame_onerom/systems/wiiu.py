@@ -6,4 +6,5 @@ class WiiUProcessor(NullProcessor):
     using Cemu automatically. By using this, we're essentially declaring the system
     as tracked but manually managed.
     """
+    file_pattern = "*.wu[x|a]"
     pass

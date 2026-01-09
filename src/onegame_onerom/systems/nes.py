@@ -1,4 +1,5 @@
 from . import CopyProcessor
 
 class NESProcessor(CopyProcessor):
-    pass
+    file_pattern = "*.zip"
+
