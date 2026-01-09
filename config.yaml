@@ -59,183 +59,141 @@ convert:
     AmstradCPC:
       source: "1G1R/Amstrad - CPC (Flux) (Retool)"
       slug: "amstradcpc"
-      file_pattern: "*.zip"
-
     Atari2600:
       source: "1G1R/Atari - Atari 2600 (Retool)"
       slug: "atari2600"
-      file_pattern: "*.zip"
     Atari5200:
       source: "1G1R/Atari - Atari 5200 (Retool)"
       slug: "atari5200"
-      file_pattern: "*.zip"
     Atari7800:
       source: "1G1R/Atari - Atari 7800 (BIN) (Retool)"
       slug: "atari7800"
-      file_pattern: "*.zip"
     AtariJaguar:
       source: "1G1R/Atari - Atari Jaguar (J64) (Retool)"
       slug: "atarijaguar"
-      file_pattern: "*.zip"
     AtariLynx:
       source: "1G1R/Atari - Atari Lynx (LYX) (Retool)"
       slug: "atarilynx"
-      file_pattern: "*.zip"
     AtariST:
       source: "1G1R/Atari - Atari ST (Retool)"
       slug: "atarist"
-      file_pattern: "*.zip"
 
     WonderSwan:
       source: "1G1R/Bandai - WonderSwan (Retool)"
       slug: "wonderswan"
-      file_pattern: "*.zip"
 
     CommodoreAmiga:
       source: "1G1R/Commodore - Amiga (Retool)"
       slug: "amiga"
-      file_pattern: "*.zip"
     Commodore64:
       source: "1G1R/Commodore - Commodore 64 (Retool)"
       slug: "c64"
-      file_pattern: "*.zip"
     CommodoreVIC20:
       source: "1G1R/Commodore - VIC-20 (Retool)"
       slug: "vic20"
-      file_pattern: "*.zip"
 
     Vectrex:
       source: "1G1R/GCE - Vectrex (Retool)"
       slug: "vectrex"
-      file_pattern: "*.zip"
 
     Intellivision:
       source: "1G1R/Mattel - Intellivision (Retool)"
       slug: "intellivision"
-      file_pattern: "*.zip"
 
     MSX:
       source: "1G1R/Microsoft - MSX (Retool)"
       slug: "msx"
-      file_pattern: "*.zip"
     MSX2:
       source: "1G1R/Microsoft - MSX2 (Retool)"
       slug: "msx2"
-      file_pattern: "*.zip"
 
     TurboGrafx16:
       source: "1G1R/NEC - PC Engine - TurboGrafx-16 (Retool)"
       slug: "pcengine"
-      file_pattern: "*.zip"
     Supergrafx:
       source: "1G1R/NEC - PC Engine SuperGrafx (Retool)"
       slug: "supergrafx"
-      file_pattern: "*.zip"
 
     NeoGeoPocket:
       source: "1G1R/SNK - NeoGeo Pocket (Retool)"
       slug: "ngp"
-      file_pattern: "*.zip"
     NeoGeoPocketColor:
       source: "1G1R/SNK - NeoGeo Pocket Color (Retool)"
       slug: "ngpc"
-      file_pattern: "*.zip"
 
     Arduboy:
       source: "1G1R/Arduboy Inc - Arduboy (Retool)"
       slug: "arduboy"
-      file_pattern: "*.zip"
 
     Arcade:
       source: "MAME/MAME ROMs (merged)"
       slug: "arcade"
-      file_pattern: "*.zip"
 
     ## NINTENDO
     FamicomDiskSystem:
       source: "1G1R/Nintendo - Family Computer Disk System (FDS) (Retool)"
       slug: "fds"
-      file_pattern: "*.zip"
     GameAndWatch:
       source: "1G1R/Nintendo - Game & Watch (Retool)"
       slug: "gameandwatch"
-      file_pattern: "*.zip"
     GameBoy:
       source: "1G1R/Nintendo - Game Boy (Retool)"
       slug: "gb"
-      file_pattern: "*.zip"
     GameBoyAdvance:
       source: "1G1R/Nintendo - Game Boy Advance (Retool)"
       slug: "gba"
-      file_pattern: "*.zip"
     GameBoyColor:
       source: "1G1R/Nintendo - Game Boy Color (Retool)"
       slug: "gbc"
-      file_pattern: "*.zip"
     Nintendo64:
       source: "1G1R/Nintendo - Nintendo 64 (BigEndian) (Retool)"
       slug: "n64"
-      file_pattern: "*.zip"
     NintendoDS:
       source: "1G1R/Nintendo - Nintendo DS (Decrypted) (Retool)"
       slug: "nds"
-      file_pattern: "*.zip"
     Nintendo3DS:
       source: "1G1R/Nintendo - Nintendo 3DS (Decrypted) (Retool)"
       slug: "n3ds"
-      file_pattern: "*.zip"
     NES:
       source: "1G1R/Nintendo - Nintendo Entertainment System (Headered) (Retool)"
       slug: "nes"
-      file_pattern: "*.zip"
     PokemonMini:
       source: "1G1R/Nintendo - Pokemon Mini (Retool)"
       slug: "pokemini"
-      file_pattern: "*.zip"
     Satellaview:
       source: "1G1R/Nintendo - Satellaview (Retool)"
       slug: "satellaview"
-      file_pattern: "*.zip"
     SufamiTurbo:
       source: "1G1R/Nintendo - Sufami Turbo (Retool)"
       slug: "sufami"
-      file_pattern: "*.zip"
-    SNES:
+    SuperNintendo:
       source: "1G1R/Nintendo - Super Nintendo Entertainment System (Retool)"
       slug: "snes"
-      file_pattern: "*.zip"
     VirtualBoy:
       source: "1G1R/Nintendo - Virtual Boy (Retool)"
       slug: "virtualboy"
-      file_pattern: "*.zip"
 
     ## SEGA
     SG1000:
       source: "1G1R/Sega - SG-1000 - SC-3000 (Retool)"
       slug: "sg-1000"
-      file_pattern: "*.zip"
     MasterSystem:
       source: "1G1R/Sega - Master System - Mark III (Retool)"
       slug: "mastersystem"
-      file_pattern: "*.zip"
     GameGear:
       source: "1G1R/Sega - Game Gear (Retool)"
       slug: "gamegear"
-      file_pattern: "*.zip"
     Genesis:
       source: "1G1R/Sega - Mega Drive - Genesis (Retool)"
       slug: "megadrive"
-      file_pattern: "*.zip"
     Sega32X:
       source: "1G1R/Sega - 32X (Retool)"
       slug: "sega32x"
-      file_pattern: "*.zip"
 
     ## Disc Systems
     Gamecube:
       source: "1G1R/Nintendo - GameCube (Retool)"
       slug: "gc"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/Dolphin-x64/DolphinTool.exe"
         options:
@@ -245,7 +203,6 @@ convert:
     Wii:
       source: "1G1R/Nintendo - Wii (Retool)"
       slug: "wii"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/Dolphin-x64/DolphinTool.exe"
         options:
@@ -255,38 +212,31 @@ convert:
     WiiWare:
       source: "1G1R/Nintendo - WiiWare (Retool)"
       slug: "wiiware"
-      file_pattern: "*.wad"
     WiiU:
       source: "1G1R/Nintendo - WiiU (Retool)"
       slug: "wiiu"
-      file_pattern: "*.wu[x|a]"
     Switch:
       source: "1G1R/Nintendo - Switch (Retool)"
       slug: "switch"
-      file_pattern: "*.(nsp|xci)"
 
     Dreamcast:
       source: "1G1R/Sega - Dreamcast (Retool)"
       slug: "dreamcast"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
     SegaCD:
       source: "1G1R/Sega - Mega CD & Sega CD (Retool)"
       slug: "segacd"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
     Saturn:
       source: "1G1R/Redump - Sega - Saturn (Retool)"
       slug: "saturn"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
     Playstation:
       source: "1G1R/Sony - PlayStation (Retool)"
       slug: "psx"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/PSXPackager/psxpackager.exe"
         options:
@@ -296,7 +246,6 @@ convert:
     PSP:
       source: "1G1R/Sony - PlayStation Portable (Retool)"
       slug: "psp"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/PSXPackager/psxpackager.exe"
         options:
@@ -306,14 +255,12 @@ convert:
     Playstation2:
       source: "1G1R/Sony - PlayStation 2 (Retool)"
       slug: "ps2"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
 
     Playstation3:
       source: "1G1R/Sony - PlayStation 3 (Retool)"
       slug: "ps3"
-      file_pattern: "*.zip"
       conversion:
         tool: "E:/Programs/bin/ps3dec.exe"
         dkeys: "D:/RomFiles/Sony - PlayStation 3 - Disc Keys TXT (4417) (2025-12-25 15-00-26)/"
