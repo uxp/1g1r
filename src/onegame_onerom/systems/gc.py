@@ -17,7 +17,7 @@ class GamecubeProcessor(SystemProcessor):
         self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):
-        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))
+        pattern = os.path.join(self.source_dir, self.file_pattern)
         files = glob.glob(pattern)
         # Group files by game name, handling multi-disc
         game_map = {}

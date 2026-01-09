@@ -1,4 +1,4 @@
 from . import CHDProcessor
 
 class Playstation2Processor(CHDProcessor):
-    pass
+    file_pattern = "*.zip"

@@ -9,12 +9,14 @@ from . import SystemProcessor
 
 
 class PSPProcessor(SystemProcessor):
+    file_pattern = "*.zip"
+
     def __init__(self, config, source_dir, dest_dir, options):
         super().__init__(config, source_dir, dest_dir, options)
         self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):
-        pattern = os.path.join(self.source_dir, self.config.get('file_pattern', '*.zip'))
+        pattern = os.path.join(self.source_dir, self.file_pattern)
         files = glob.glob(pattern)
         # Group files by game name, handling multi-disc
         game_map = {}
