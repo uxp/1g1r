@@ -31,24 +31,26 @@ def cli(ctx, config, dry_run=False, force=False, log=None):
     dest_dir = config.get("dest", "")
 
     systems_config: dict[str, dict] = config.get('systems', {})
-    sorted_systems = {name: obj for name, obj in sorted(systems_config.items(), key=lambda x: x[1].get('slug', None))}
+    sorted_systems = {name: obj for name, obj in sorted(systems_config.items())}
 
-    for system_name, sys_conf in sorted_systems.items():
-        module_name = sys_conf.get('slug', None)
-        if module_name is None:
-            logger.error(f"No slug defined for {system_name}. Aborting.")
+    for system_slug, sys_conf in sorted_systems.items():
+        system_name = sys_conf.get('name', None)
+        if system_name is None:
+            logger.error(f"No name defined for slug '{system_slug}'. Aborting.")
             continue
-        module_name = module_name.lower().replace('-', '_')
+
+        module_slug = system_slug.lower().replace('-', '_')
 
         try:
-            module = __import__(f'onegame_onerom.systems.{module_name}', fromlist=[f'{system_name}Processor'])
+            module = __import__(f"onegame_onerom.systems.{module_slug}", fromlist=[f"{system_name}Processor"])
             processor_class = getattr(module, f'{system_name}Processor')
         except (ImportError, AttributeError) as e:
-            logger.error(f"Error loading module for {system_name}: {e}")
+            logger.error(f"Error loading module for {system_name} ({system_slug}): {e}")
             continue
+
         # Join base source/dest with per-system config
         sys_source = os.path.join(source_dir, sys_conf.get('source'))
-        sys_dest = os.path.join(dest_dir, sys_conf.get('slug'))
+        sys_dest = os.path.join(dest_dir, system_slug)
 
         if not os.path.exists(sys_source):
             logger.warning(f"Source directory does not exist for {system_name}. Skipping.")

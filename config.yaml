@@ -56,211 +56,192 @@ convert:
   source: "D:/RomFiles/RomRoot"
   dest: "D:/roms"
   systems:
-    AmstradCPC:
+    amstradcpc:
+      name: AmstradCPC
       source: "1G1R/Amstrad - CPC (Flux) (Retool)"
-      slug: "amstradcpc"
-    Atari2600:
+    atari2600:
+      name: Atari2600
       source: "1G1R/Atari - Atari 2600 (Retool)"
-      slug: "atari2600"
-    Atari5200:
+    atari5200:
+      name: Atari5200
       source: "1G1R/Atari - Atari 5200 (Retool)"
-      slug: "atari5200"
-    Atari7800:
+    atari7800:
+      name: Atari7800
       source: "1G1R/Atari - Atari 7800 (BIN) (Retool)"
-      slug: "atari7800"
-    AtariJaguar:
+    atarijaguar:
+      name: AtariJaguar
       source: "1G1R/Atari - Atari Jaguar (J64) (Retool)"
-      slug: "atarijaguar"
-    AtariLynx:
+    atarilynx:
+      name: AtariLynx
       source: "1G1R/Atari - Atari Lynx (LYX) (Retool)"
-      slug: "atarilynx"
-    AtariST:
+    atarist:
+      name: AtariST
       source: "1G1R/Atari - Atari ST (Retool)"
-      slug: "atarist"
-
-    WonderSwan:
+    wonderswan:
+      name: WonderSwan
       source: "1G1R/Bandai - WonderSwan (Retool)"
-      slug: "wonderswan"
-
-    CommodoreAmiga:
+    amiga:
+      name: CommodoreAmiga
       source: "1G1R/Commodore - Amiga (Retool)"
-      slug: "amiga"
-    Commodore64:
+    c64:
+      name: Commodore64
       source: "1G1R/Commodore - Commodore 64 (Retool)"
-      slug: "c64"
-    CommodoreVIC20:
+    vic20:
+      name: CommodoreVIC20
       source: "1G1R/Commodore - VIC-20 (Retool)"
-      slug: "vic20"
-
-    Vectrex:
+    vectrex:
+      name: Vectrex
       source: "1G1R/GCE - Vectrex (Retool)"
-      slug: "vectrex"
-
-    Intellivision:
+    intellivision:
+      name: Intellivision
       source: "1G1R/Mattel - Intellivision (Retool)"
-      slug: "intellivision"
-
-    MSX:
+    msx:
+      name: MSX
       source: "1G1R/Microsoft - MSX (Retool)"
-      slug: "msx"
-    MSX2:
+    msx2:
+      name: MSX2
       source: "1G1R/Microsoft - MSX2 (Retool)"
-      slug: "msx2"
-
-    TurboGrafx16:
+    pcengine:
+      name: TurboGrafx16
       source: "1G1R/NEC - PC Engine - TurboGrafx-16 (Retool)"
-      slug: "pcengine"
-    Supergrafx:
+    supergrafx:
+      name: Supergrafx
       source: "1G1R/NEC - PC Engine SuperGrafx (Retool)"
-      slug: "supergrafx"
-
-    NeoGeoPocket:
+    ngp:
+      name: NeoGeoPocket
       source: "1G1R/SNK - NeoGeo Pocket (Retool)"
-      slug: "ngp"
-    NeoGeoPocketColor:
+    ngpc:
+      name: NeoGeoPocketColor
       source: "1G1R/SNK - NeoGeo Pocket Color (Retool)"
-      slug: "ngpc"
-
-    Arduboy:
+    arduboy:
+      name: Arduboy
       source: "1G1R/Arduboy Inc - Arduboy (Retool)"
-      slug: "arduboy"
-
-    Arcade:
+    arcade:
+      name: Arcade
       source: "MAME/MAME ROMs (merged)"
-      slug: "arcade"
-
-    ## NINTENDO
-    FamicomDiskSystem:
+    fds:
+      name: FamicomDiskSystem
       source: "1G1R/Nintendo - Family Computer Disk System (FDS) (Retool)"
-      slug: "fds"
-    GameAndWatch:
+    gameandwatch:
+      name: GameAndWatch
       source: "1G1R/Nintendo - Game & Watch (Retool)"
-      slug: "gameandwatch"
-    GameBoy:
+    gb:
+      name: GameBoy
       source: "1G1R/Nintendo - Game Boy (Retool)"
-      slug: "gb"
-    GameBoyAdvance:
+    gba:
+      name: GameBoyAdvance
       source: "1G1R/Nintendo - Game Boy Advance (Retool)"
-      slug: "gba"
-    GameBoyColor:
+    gbc:
+      name: GameBoyColor
       source: "1G1R/Nintendo - Game Boy Color (Retool)"
-      slug: "gbc"
-    Nintendo64:
+    n64:
+      name: Nintendo64
       source: "1G1R/Nintendo - Nintendo 64 (BigEndian) (Retool)"
-      slug: "n64"
-    NintendoDS:
+    nds:
+      name: NintendoDS
       source: "1G1R/Nintendo - Nintendo DS (Decrypted) (Retool)"
-      slug: "nds"
-    Nintendo3DS:
+    n3ds:
+      name: Nintendo3DS
       source: "1G1R/Nintendo - Nintendo 3DS (Decrypted) (Retool)"
-      slug: "n3ds"
-    NES:
+    nes:
+      name: NES
       source: "1G1R/Nintendo - Nintendo Entertainment System (Headered) (Retool)"
-      slug: "nes"
-    PokemonMini:
+    pokemini:
+      name: PokemonMini
       source: "1G1R/Nintendo - Pokemon Mini (Retool)"
-      slug: "pokemini"
-    Satellaview:
+    satellaview:
+      name: Satellaview
       source: "1G1R/Nintendo - Satellaview (Retool)"
-      slug: "satellaview"
-    SufamiTurbo:
+    sufami:
+      name: SufamiTurbo
       source: "1G1R/Nintendo - Sufami Turbo (Retool)"
-      slug: "sufami"
-    SuperNintendo:
+    snes:
+      name: SuperNintendo
       source: "1G1R/Nintendo - Super Nintendo Entertainment System (Retool)"
-      slug: "snes"
-    VirtualBoy:
+    virtualboy:
+      name: VirtualBoy
       source: "1G1R/Nintendo - Virtual Boy (Retool)"
-      slug: "virtualboy"
-
-    ## SEGA
-    SG1000:
+    sg-1000:
+      name: SG1000
       source: "1G1R/Sega - SG-1000 - SC-3000 (Retool)"
-      slug: "sg-1000"
-    MasterSystem:
+    mastersystem:
+      name: MasterSystem
       source: "1G1R/Sega - Master System - Mark III (Retool)"
-      slug: "mastersystem"
-    GameGear:
+    gamegear:
+      name: GameGear
       source: "1G1R/Sega - Game Gear (Retool)"
-      slug: "gamegear"
-    Genesis:
+    megadrive:
+      name: Genesis
       source: "1G1R/Sega - Mega Drive - Genesis (Retool)"
-      slug: "megadrive"
-    Sega32X:
+    sega32x:
+      name: Sega32X
       source: "1G1R/Sega - 32X (Retool)"
-      slug: "sega32x"
-
-    ## Disc Systems
-    Gamecube:
+    gc:
+      name: Gamecube
       source: "1G1R/Nintendo - GameCube (Retool)"
-      slug: "gc"
       conversion:
         tool: "E:/Programs/Dolphin-x64/DolphinTool.exe"
         options:
           compression_level: 5
           compression: "zstd"
           block_size: 131072
-    Wii:
+    wii:
+      name: Wii
       source: "1G1R/Nintendo - Wii (Retool)"
-      slug: "wii"
       conversion:
         tool: "E:/Programs/Dolphin-x64/DolphinTool.exe"
         options:
           compression_level: 5
           compression: "zstd"
           block_size: 131072
-    WiiWare:
+    wiiware:
+      name: WiiWare
       source: "1G1R/Nintendo - WiiWare (Retool)"
-      slug: "wiiware"
-    WiiU:
+    wiiu:
+      name: WiiU
       source: "1G1R/Nintendo - WiiU (Retool)"
-      slug: "wiiu"
-    Switch:
+    switch:
+      name: Switch
       source: "1G1R/Nintendo - Switch (Retool)"
-      slug: "switch"
-
-    Dreamcast:
+    dreamcast:
+      name: Dreamcast
       source: "1G1R/Sega - Dreamcast (Retool)"
-      slug: "dreamcast"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
-    SegaCD:
+    segacd:
+      name: SegaCD
       source: "1G1R/Sega - Mega CD & Sega CD (Retool)"
-      slug: "segacd"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
-    Saturn:
+    saturn:
+      name: Saturn
       source: "1G1R/Redump - Sega - Saturn (Retool)"
-      slug: "saturn"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
-    Playstation:
+    psx:
+      name: Playstation
       source: "1G1R/Sony - PlayStation (Retool)"
-      slug: "psx"
       conversion:
         tool: "E:/Programs/PSXPackager/psxpackager.exe"
         options:
           quiet: true
           log: "E:/Logs/psxpackager.log"
-
-    PSP:
+    psp:
+      name: PSP
       source: "1G1R/Sony - PlayStation Portable (Retool)"
-      slug: "psp"
       conversion:
         tool: "E:/Programs/PSXPackager/psxpackager.exe"
         options:
           quiet: true
           log: "E:/Logs/psxpackager.log"
-
-    Playstation2:
+    ps2:
+      name: Playstation2
       source: "1G1R/Sony - PlayStation 2 (Retool)"
-      slug: "ps2"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
-
-    Playstation3:
+    ps3:
+      name: Playstation3
       source: "1G1R/Sony - PlayStation 3 (Retool)"
-      slug: "ps3"
       conversion:
         tool: "E:/Programs/bin/ps3dec.exe"
         dkeys: "D:/RomFiles/Sony - PlayStation 3 - Disc Keys TXT (4417) (2025-12-25 15-00-26)/"
