@@ -7,4 +7,3 @@ class WiiUProcessor(NullProcessor):
     as tracked but manually managed.
     """
     file_pattern = "*.wu[x|a]"
-    pass

@@ -11,8 +11,8 @@ from . import SystemProcessor
 class PSPProcessor(SystemProcessor):
     file_pattern = "*.zip"
 
-    def __init__(self, config, source_dir, dest_dir, options):
-        super().__init__(config, source_dir, dest_dir, options)
+    def __init__(self, name, config, source_dir, dest_dir, options):
+        super().__init__(name, config, source_dir, dest_dir, options)
         self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):

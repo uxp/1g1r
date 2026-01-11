@@ -64,14 +64,20 @@ def touch(fname, times=None):
 
 
 class SystemProcessor(abc.ABC):
+    name: str = None
+    config: dict = None
+    source_dir: str = None
+    dest_dir: str = None
+    options: dict = None
     file_pattern = "*"
 
-    def __init__(self, config, source_dir, dest_dir, options):
+    def __init__(self, name, config, source_dir, dest_dir, options):
+        self.name = name
         self.config = config
         self.source_dir = source_dir
         self.dest_dir = dest_dir
         self.options = options
-        self.logger = logging.getLogger('.'.join([*__name__.split('.'), config.get('slug', 'unknown')]))
+        self.logger = logging.getLogger('.'.join([*__name__.split('.'), (name or 'unknown')]))
 
     @abc.abstractmethod
     def find_inputs(self):
@@ -84,21 +90,23 @@ class SystemProcessor(abc.ABC):
 
 # For when we want to not do anything (yet?)
 class NullProcessor(SystemProcessor):
-    def __init__(self, config, source_dir, dest_dir, options):
-        super().__init__(config, source_dir, dest_dir, options)
+    def __init__(self, name, config, source_dir, dest_dir, options):
+        super().__init__(name, config, source_dir, dest_dir, options)
+        self.name = name
         self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):
         return []
 
     def process(self):
-        self.logger.info(f"Skipped {self.config.get('slug', 'Unknown')} System.")
+        self.logger.info(f"Skipped {self.name or 'Unknown'} System.")
 
 
 # Generalized processor for copy-only systems
 class CopyProcessor(SystemProcessor):
-    def __init__(self, config, source_dir, dest_dir, options):
-        super().__init__(config, source_dir, dest_dir, options)
+    def __init__(self, name, config, source_dir, dest_dir, options):
+        super().__init__(name, config, source_dir, dest_dir, options)
+        self.logger = logging.getLogger(__name__)
 
     def find_inputs(self):
         pattern = os.path.join(self.source_dir, self.file_pattern)
@@ -138,8 +146,8 @@ class CopyProcessor(SystemProcessor):
 class CHDProcessor(SystemProcessor):
     file_pattern = "*.zip"
 
-    def __init__(self, config, source_dir, dest_dir, options):
-        super().__init__(config, source_dir, dest_dir, options)
+    def __init__(self, name, config, source_dir, dest_dir, options):
+        super().__init__(name, config, source_dir, dest_dir, options)
 
     def find_inputs(self):
         pattern = os.path.join(self.source_dir, self.file_pattern)

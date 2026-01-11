@@ -1,3 +1,14 @@
+compress:
+  source: "D:/roms"
+  dest: "H:/Temp/romdir"
+  # appx: 25gb
+  max_bin_size: 26843545600
+  compression_level: 5
+  output_file_prefix: roms
+  exclude:
+    - "switch/*"
+    - "ps3/*"
+
 backup:
   source: "D:/roms"
   dest: "D:/backup"
@@ -215,7 +226,7 @@ convert:
         tool: "E:/Programs/bin/chdman.exe"
     saturn:
       name: Saturn
-      source: "1G1R/Redump - Sega - Saturn (Retool)"
+      source: "1G1R/Sega - Saturn (Retool)"
       conversion:
         tool: "E:/Programs/bin/chdman.exe"
     psx:
